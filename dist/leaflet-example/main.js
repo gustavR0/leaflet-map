@@ -227,7 +227,7 @@ class MapComponent {
     initStatesLayer() {
         const stateLayer = leaflet__WEBPACK_IMPORTED_MODULE_1__["geoJSON"](this.states, {
             style: (feature) => ({
-                weight: 3,
+                weight: 1,
                 opacity: 0.5,
                 color: '#008f68',
                 fillOpacity: 0.8,
@@ -243,17 +243,17 @@ class MapComponent {
     highlightFeature(e) {
         const layer = e.target;
         layer.setStyle({
-            weight: 10,
+            weight: 2,
             opacity: 1.0,
-            color: '#DFA612',
+            color: '#df6e12',
             fillOpacity: 1.0,
-            fillColor: '#FAE042',
+            fillColor: '#fab042',
         });
     }
     resetFeature(e) {
         const layer = e.target;
         layer.setStyle({
-            weight: 3,
+            weight: 1,
             opacity: 0.5,
             color: '#008f68',
             fillOpacity: 0.8,

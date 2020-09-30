@@ -50,7 +50,7 @@ export class MapComponent implements AfterViewInit {
   private initStatesLayer() {
     const stateLayer = L.geoJSON(this.states, {
       style: (feature) => ({
-        weight: 3,
+        weight: 1,
         opacity: 0.5,
         color: '#008f68',
         fillOpacity: 0.8,
@@ -69,18 +69,18 @@ export class MapComponent implements AfterViewInit {
   private highlightFeature(e)  {
     const layer = e.target;
     layer.setStyle({
-      weight: 10,
+      weight: 2,
       opacity: 1.0,
-      color: '#DFA612',
+      color: '#df6e12',
       fillOpacity: 1.0,
-      fillColor: '#FAE042',
+      fillColor: '#fab042',
     });
   }
 
   private resetFeature(e)  {
     const layer = e.target;
     layer.setStyle({
-      weight: 3,
+      weight: 1,
       opacity: 0.5,
       color: '#008f68',
       fillOpacity: 0.8,
