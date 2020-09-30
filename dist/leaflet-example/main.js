@@ -188,8 +188,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "4R65");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _services_marker_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services/marker.service */ "q++V");
-/* harmony import */ var _services_shape_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_services/shape.service */ "45aq");
+/* harmony import */ var _services_shape_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services/shape.service */ "45aq");
+/* harmony import */ var _services_marker_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_services/marker.service */ "q++V");
 //import { Component, OnInit } from '@angular/core';
 
 
@@ -211,9 +211,9 @@ const iconDefault = leaflet__WEBPACK_IMPORTED_MODULE_1__["icon"]({
 });
 leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"].prototype.options.icon = iconDefault;
 class MapComponent {
-    constructor(markerService, shapeService) {
-        this.markerService = markerService;
+    constructor(shapeService, markerService) {
         this.shapeService = shapeService;
+        this.markerService = markerService;
     }
     ngAfterViewInit() {
         this.initMap();
@@ -221,8 +221,8 @@ class MapComponent {
         this.shapeService.getStateShapes().subscribe(states => {
             this.states = states;
             this.initStatesLayer();
+            this.markerService.makeCapitalCircleMarkers(this.map);
         });
-        this.markerService.makeCapitalCircleMarkers(this.map);
     }
     initStatesLayer() {
         const stateLayer = leaflet__WEBPACK_IMPORTED_MODULE_1__["geoJSON"](this.states, {
@@ -272,7 +272,7 @@ class MapComponent {
         tiles.addTo(this.map);
     }
 }
-MapComponent.ɵfac = function MapComponent_Factory(t) { return new (t || MapComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_marker_service__WEBPACK_IMPORTED_MODULE_2__["MarkerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_shape_service__WEBPACK_IMPORTED_MODULE_3__["ShapeService"])); };
+MapComponent.ɵfac = function MapComponent_Factory(t) { return new (t || MapComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_shape_service__WEBPACK_IMPORTED_MODULE_2__["ShapeService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_marker_service__WEBPACK_IMPORTED_MODULE_3__["MarkerService"])); };
 MapComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MapComponent, selectors: [["app-map"]], decls: 3, vars: 0, consts: [[1, "map-container"], [1, "map-frame"], ["id", "map"]], template: function MapComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -287,7 +287,7 @@ MapComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
                 templateUrl: './map.component.html',
                 styleUrls: ['./map.component.scss']
             }]
-    }], function () { return [{ type: _services_marker_service__WEBPACK_IMPORTED_MODULE_2__["MarkerService"] }, { type: _services_shape_service__WEBPACK_IMPORTED_MODULE_3__["ShapeService"] }]; }, null); })();
+    }], function () { return [{ type: _services_shape_service__WEBPACK_IMPORTED_MODULE_2__["ShapeService"] }, { type: _services_marker_service__WEBPACK_IMPORTED_MODULE_3__["MarkerService"] }]; }, null); })();
 
 
 /***/ }),

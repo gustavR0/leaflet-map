@@ -34,7 +34,7 @@ export class MapComponent implements AfterViewInit {
   private map;
   private states;
 
-  constructor(private markerService: MarkerService,private shapeService: ShapeService) { }
+  constructor(private shapeService: ShapeService, private markerService: MarkerService) { }
 
 
   ngAfterViewInit(): void {
@@ -43,9 +43,8 @@ export class MapComponent implements AfterViewInit {
     this.shapeService.getStateShapes().subscribe(states => {
       this.states = states;
       this.initStatesLayer();
-      
+      this.markerService.makeCapitalCircleMarkers(this.map);
     });
-    this.markerService.makeCapitalCircleMarkers(this.map);
   }
 
   private initStatesLayer() {
